@@ -1,0 +1,23 @@
+<div id="container">
+  <div id="left">
+    <div>
+      <h1>GitHub Score</h1>
+      <form (submit)="calculateScore(form)" #form="ngForm">
+        <label for="username">
+          Github Username:
+          <input type="text" name='username' required [ngModel]="username">
+        </label><br>
+        <button [disabled]="form.invalid">Calculate my Github Score</button>
+      </form>
+    </div>
+  </div>
+  <div id="right">
+    <div *ngIf="userExists">
+      <h1>Your Score: {{ score }}</h1>
+      <h4 [ngStyle]="{'color': font}">{{message}}</h4>
+    </div>
+    <div *ngIf="userExists === false">
+      <h3>User '{{ username }}' does not exist, choose a different github username.</h3>
+    </div>
+  </div>
+</div>
